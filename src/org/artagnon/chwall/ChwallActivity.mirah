@@ -3,6 +3,8 @@ package org.artagnon.chwall
 import android.app.Activity
 import android.content.Intent
 import android.provider.MediaStore
+import android.graphics.BitmapFactory
+import android.app.WallpaperManager
 
 class ChwallActivity < Activity
   def onCreate(state)
@@ -10,19 +12,19 @@ class ChwallActivity < Activity
     setContentView R.layout.main
   end
 
-  $Override
-  def onStart
-    super
-    startActivity Intent.new Intent.ACTION_PICK,
-                             MediaStore.Images.Media.INTERNAL_CONTENT_URI
+  def onStartPrime
+    # super
+    uri = MediaStore.Images.Media.INTERNAL_CONTENT_URI
+    startActivityForResult Intent.new(Intent.ACTION_PICK, uri), 0
     finish
   end
 
   $Override
-  def onActivityResult(requestCode, resultCode, data)
+  def onStart
     super
-    if (resultCode == -1)
-        contentpath = data.getDataString()
-    end
+    thumb = BitmapFactory.decodeFile "/storage/sdcard0/download/rr-bcr.jpeg"
+    manager = WallpaperManager.getInstance self
+    manager.setBitmap thumb
+    finish
   end
 end
