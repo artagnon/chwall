@@ -17,7 +17,7 @@ class ChwallActivity < Activity
     super
     Intent intent = Intent.new(Intent.ACTION_PICK)
     intent.setType "image/*"
-    startActivityForResult Intent.createChooser(intent, "Select Picture"), 0
+    startActivityForResult intent, 0
   end
 
   $Override
@@ -28,5 +28,6 @@ class ChwallActivity < Activity
     thumb = BitmapFactory.decodeStream imageStream
     manager = WallpaperManager.getInstance self
     manager.setBitmap thumb
+    finish
   end
 end
