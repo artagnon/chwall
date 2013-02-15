@@ -15,7 +15,7 @@ class ChwallActivity < Activity
   $Override
   def onStart
     super
-    Intent intent = Intent.new(Intent.ACTION_PICK)
+    intent = Intent.new Intent.ACTION_PICK
     intent.setType "image/*"
     startActivityForResult intent, 0
   end
