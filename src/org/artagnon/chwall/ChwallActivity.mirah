@@ -2,6 +2,7 @@ package org.artagnon.chwall
 
 import android.app.Activity
 import android.content.Intent
+import android.content.Context
 import android.graphics.BitmapFactory
 import android.app.WallpaperManager
 
@@ -22,7 +23,9 @@ class ChwallActivity < Activity
   $Override
   def onActivityResult(requestCode, resultCode, data:Intent)
     super
-    thumb = BitmapFactory.decodeFile "/storage/sdcard0/download/rr-bcr.jpeg"
+    selectedImage = data.getData
+    imageStream = getContentResolver().openInputStream selectedImage
+    thumb = BitmapFactory.decodeStream imageStream
     manager = WallpaperManager.getInstance self
     manager.setBitmap thumb
   end
