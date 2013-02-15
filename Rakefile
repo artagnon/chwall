@@ -3,5 +3,5 @@ require "pindah"
 
 Pindah.spec = {
   :name => "chwall",
-  :target_version => "2.3.3"
+  :target_version => "4.2"
 }
