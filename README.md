@@ -19,7 +19,6 @@ First, get JRuby 1.6.8 (I can't recommend
 [rbenv](https://github.com/sstephenson/rbenv) enough):
 
     $ rbenv install jruby-1.6.8
-    $ rbenv --global jruby-1.6.8
 
 Next, get rake and mirah:
 
